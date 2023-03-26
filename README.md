@@ -24,7 +24,7 @@ set OPENAI_API_KEY=<YOUR_KEY>  //Для винды
 
 export OPENAI_API_KEY=<YOUR_KEY> //для пингвина
 ```
-4. Fill your dataset with your answers in `dataset.txt`
+4. Fill your dataset with your answers in `dataset.jsonl`
 5. Validate your dataset
 ```
 openai tools fine_tunes.prepare_data -f dataset.jsonl -q
