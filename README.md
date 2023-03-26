@@ -19,6 +19,7 @@ pip install -r requirements.txt
 ```
 2. Get OpenAI API key from your account
 3. Setup yout OpenAI key
+https://platform.openai.com/account/api-keys
 ```
 set OPENAI_API_KEY=<YOUR_KEY>  //Для винды
 
@@ -34,8 +35,9 @@ openai tools fine_tunes.prepare_data -f dataset.jsonl -q
 openai api fine_tunes.create -t dataset.jsonl -m davinci --suffix "<YOUR_MODEL_NAME>"
 ```
 7. Create Telegram bot using BotFather
-8. Update tg_bot.py with your bot token, OpenAI Token and model name.
-9. Run!
+https://t.me/BotFather
+9. Update tg_bot.py with your bot token, OpenAI Token and model name.
+10. Run!
 For english version:
 ```
 python tg_bot_eng.py
