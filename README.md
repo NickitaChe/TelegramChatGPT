@@ -20,7 +20,9 @@ pip install -r requirements.txt
 2. Get OpenAI API key from your account
 3. Setup yout OpenAI key
 ```
-export OPENAI_API_KEY=<YOUR_KEY>
+set OPENAI_API_KEY=<YOUR_KEY>  //Для винды
+
+export OPENAI_API_KEY=<YOUR_KEY> //для пингвина
 ```
 4. Fill your dataset with your answers in `dataset.txt`
 5. Validate your dataset
