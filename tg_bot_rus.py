@@ -1,12 +1,16 @@
 import telebot
-import openai
 import time
+import os
+import openai
+
 from googletrans import Translator
 
-bot = telebot.TeleBot("<YOUR_TG_BOT_KEY_HERE>")
-openai.api_key = "<YOUR_OPEN_API_KEY_HERE>"
-model = "davinci:ft-personal:<YOUR_MODEL_HERE>"
+bot = telebot.TeleBot(os.getenv("TELEBOT_KEY"))
+openai.api_key = os.getenv("OPENAI_API_KEY")
+model = "davinci:ft-personal:your-model-name-2023-03-26-21-39-39"
 stop_symbols = "###"
+
+
 
 translator = Translator()
 
@@ -20,7 +24,6 @@ def _get_user(id):
 
 
 def _process_rq(user_id, rq):
-    try {
     user = _get_user(user_id)
     last_text = user['last_text']
     # if last prompt time > 10 minutes ago - drop context
@@ -42,7 +45,13 @@ def _process_rq(user_id, rq):
         prompt = f"{last_text}Q: {rq} ->"[-1000:]
         print("Sending to OpenAI: " + prompt)
         completion = openai.Completion.create(
-            engine=model, prompt=prompt, max_tokens=256, stop=[stop_symbols], temperature=0.7)
+            engine=model,
+            prompt=prompt,
+            max_tokens=100,
+            n=1,
+            stop=stop_symbols,
+            temperature=0.5,
+        )
         eng_ans = completion['choices'][0]['text'].strip()
         if "->" in eng_ans:
             eng_ans = eng_ans.split("->")[0].strip()
@@ -60,10 +69,7 @@ def _process_rq(user_id, rq):
         user['last_prompt_time'] = 0
         user['last_text'] = ''
         return "!!! Error! Please use simple short texts"
-    } catch (Exception e) {
-        print(e)
-        retrun f"Error {e}"
-    }
+
 
 
 @bot.message_handler(commands=['start', 'help'])

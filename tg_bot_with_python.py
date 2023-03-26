@@ -5,6 +5,7 @@ import traceback
 from contextlib import redirect_stdout
 from io import StringIO
 
+import export
 import flask
 import openai
 import telebot
@@ -18,6 +19,7 @@ import uuid
 # Proxy server for accessing OpenAI API
 app = flask.Flask(__name__)
 
+
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 if not OPENAI_API_KEY:
     print("Please set OPENAI_API_KEY environment variable")
@@ -28,16 +30,13 @@ if not TG_TOKEN:
     print("Please set TG_TOKEN environment variable")
     exit()
 
-AUTH_TOKEN = os.environ.get("AUTH_TOKEN", None)
-if not AUTH_TOKEN:
-    raise ValueError("AUTH_TOKEN must be set")
 
 # Generate random secret
 PREMIUM_SECRET = os.environ.get(
     "PREMIUM_SECRET", uuid.uuid4())
 print(f"Bot secret: {PREMIUM_SECRET}")
 
-mynames = ["@trololobot", "@кибердед", "trololo_bot",
+mynames = ["@NickitaChe", "@кибердед", "trololo_bot",
            "кибердед", "кибердед,", "trololobot"]
 # mynames = ["whentimecomesbot", "когдапридетвремя", "@whentimecomesbot",
 #           "когдапридетвремя,", "времяпришло", "времяпришло,"]

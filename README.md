@@ -1,3 +1,10 @@
+# КАРОЧ РАССКАЗЫВАЮ ЧЁ ДЕЛАТЬ:
+Всё, что описано ниже надо делать через cmd а не павершелл, ![img.png](img.png)
+На сайте openai.com После того, как вы обучили модель, можнопосмотреть на имя нашего бота
+Его мы вставляем в model и дальше всё как по маслу
+
+
+
 # TelegramChatGPT
 Personal telegram chat-bot based on OpenAI GPT-3 finetuning.
 
@@ -40,3 +47,6 @@ python tg_bot_rus.py
 ```
 OPENAI_API_KEY=<YOUR_OPENAI_KEY> TG_TOKEN=<YOUR_TELEGRAM_BOT_TOKEN> tg_bot_with_python.py
 ```
+
+
+
